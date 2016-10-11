@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="author" content="Carey Chou">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <title>RBM Choice Models | Shared Memory</title>
+
+        <link rel="alternate" type="application/atom+xml" title="Shared Memory blog atom feed" href="/feeds/all.atom.xml" />
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+        <link rel="stylesheet" href="/theme/css/pygments.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
+
+    </head>
+
+    <body>
+        <header class="main-header" style="background: url('') no-repeat center center #DDD; background-size: 100%;">
+        <nav>
+            <div class="container">
+            <ul>
+                <li><a href="/" title="Home">Home</a></li>
+
+                    <li><a href="/pages/about.html" title="About">About</a></li>
+                    <li><a href="/archives.html" title="Archive">Archives</a></li>
+                    <li><a href="/feeds/all.atom.xml" title="sharedmemory.github.io RSS feed" rel="me">RSS</a></li>
+            </ul>
+            </div>
+        </nav>
+        </header>
+
+<div class="container post">
+
+    <article>
+        <header>
+            <h1>RBM Choice Models</h1>
+            <time datetime="article.date.isoformat()" pubdate>October 01, 2016</time>
+        </header>
+
+        <div class="article_content">
+            <h2>Context</h2>
+<p>Modeling customers' choices is an important step towards understanding how purchase decisions are made as well as being able to quantify the magnitude of tradeoffs among product functions.</p>
+<p>Traditional approaches to constructing choice models assume IIA (Independence of Irrelevant Alternatives) -- which include MLM, Conjoint Analysis, etc.  In reality, it is impractical to assume that every customer has equal exposure to all choices when making a decision.</p>
+<p>As we continue to gather online engagement data, product browse/click tracking data gives us a direct signal to model a customer's decision behavior.  Essentailly, we can categorize each visit to the site as a customer trip, then add a binary label to the product being purchased versus the other products being viewed in the session.  Products being viewed are grouped into a "choice set" and the product being purchased is known as the "selection set".  While the maximum size of a choice set is limited to the number of products in an assortment, in reality, the size of the choice set on a per-customer bases will be significantly smaller (i.e. customers will normally consider only a few products when deciding to make a purchase).  In our use case, the average choice set contains approximately 15 products; this is the typical challenge under IIA assumption - the number of available products can sometimes be in the millions (i.e. Amazon) which create very sparse choice sets.</p>
+<p>To tackle this unique problem, we studied several methods including lower bound non-parametric models, rank based EM models, and <a href="http://papers.nips.cc/paper/5280-restricted-boltzmann-machines-modeling-human-choice.pdf">RBM Human Choice</a>.  These are the most recent emerging approaches to solve sparsity choice models with limited data.  The RBM approach is appealing in that we can also derive side-by-side complimentary, substituted, and attractive effects.</p>
+<h2>Implementation</h2>
+<p>We implemented the solution using Python + Chainer on three Nvidia GeForce TITAN X GPUs.  The network is a binary RBM (visible and hidden) with adaptive weight decay.  To speed up the training, we adopt K-contrasive divergence learning, which essentially is a K-steps gibbs sampling method.  The weights are updated through reconstruction error on the visible layer via sigmoid cross entropy.</p>
+<h2>Results</h2>
+<p>Use trained hidden-to-visible weights to calculate choice rate</p>
+<div class="math">$$\lambda(x|X)\equiv exp(b_{x})\displaystyle\prod_{k\in K} (1 + exp(T_{X}^{k} + U_x^{k}))$$</div>
+<p>where </p>
+<div class="math">$$x \in X$$</div>
+<p> and </p>
+<div class="math">$$T_X^{k} \equiv \displaystyle\sum_{Y \in X} T_Y^{k}$$</div>
+<p>We can use these probabilities to compare two products in a choice set.</p>
+<p><img alt="alt text" src="/images/ysl_handbags.png" title="YSL" /></p>
+<p><img alt="alt text" src="/images/ugly_handbag.png" title="Extreme Difference" /></p>
+<ul>
+<li>Take the most frequent pairs of products in our validation data</li>
+<li>Calculate their choice rate</li>
+<li>Calculate their choice rate from each choice set that they occur in in the validation data</li>
+<li>Calculate the KL-Divergence between these two distributions and use this metric as the graph weight </li>
+</ul>
+<p><img alt="alt test" src="/images/graph.png" title="KLD-Graph" /></p>
+<ul>
+<li>We can also calculate attraction effect.  If we have two products in a choice set, how does the addition of a third product affect customer choice?</li>
+<li>The strength of the attraction effect of a product C on A is defined as</li>
+</ul>
+<div class="math">$$\psi_{A,C,X}^{(att)}\equiv\frac{p(A|X \cup \{C\})}{p(A|X)}$$</div>
+<ul>
+<li>When this equation is greater than one there is an attraction effect.</li>
+<li>Product B is prefered much more than product A</li>
+</ul>
+<p><img alt="alt text" src="/images/pre_attraction.png" title="Before addition of attraction" /></p>
+<ul>
+<li>After the addition of a product C, the probability of product A has increased 12 fold.</li>
+</ul>
+<p><img alt="alt text" src="/images/post_attraction.png" title="Post attraction" /></p>
+<div class="math">$$\frac{0.1373}{0.0109} = 12.59$$</div>
+<h2>References</h2>
+<p>[1] Osogami, Takayuki and Otsuka, Makoto.  Testricted Boltzmann Machines modeling human choice.  <em>IBM Research - Tokyo</em>.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+        </div>
+
+        <div class="meta">
+            <div>
+            </div>
+            <div>
+                <a id="comments-button" class="comments_btn" href="#disqus_thread">Show comments</a>
+            </div>
+        </div>
+    </article>
+</div>
+
+<script type="text/javascript">
+(function () {
+    'use strict';
+
+    // Global object
+    var App = {};
+
+    // Create button
+    App.commentsButton = document.getElementById('comments-button');
+
+    App.commentsButton.onclick = function () {
+        // Remove button action on click
+        App.commentsButton.onclick = function () {
+        }
+
+        // Create comments container
+        App.disqusContainer = document.createElement('div');
+        App.disqusContainer.setAttribute('id', 'disqus_thread');
+        // App.disqusContainer.setAttribute('class', 'container');
+
+        // Append container to body or div
+        // document.body.appendChild( App.disqusContainer );
+        var container = document.getElementsByClassName('container post')[0];
+        container.appendChild(App.disqusContainer);
+
+        // Your Disqus shortname
+        App.disqus_shortname = '';
+
+        // Embed Disqus
+        var dsq = document.createElement('script');
+
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + App.disqus_shortname + '.disqus.com/embed.js';
+
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+        window.scrollTo(0, dsq.offsetTop - 200);
+    };
+})();
+</script>
+
+
+    </body>
+</html>
