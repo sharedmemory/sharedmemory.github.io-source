@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="author" content="{{ AUTHOR }}">
+        <meta name="description" content="{% block description %}{%endblock%}">
+        <meta name="viewport" content="width=device-width">
+        <title>{% block title %}{% endblock %} | {{ SITENAME }}</title>
+
+        <link rel="alternate" type="application/atom+xml" title="{{SITENAME}} blog atom feed" href="/feeds/all.atom.xml" />
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+        <link rel="stylesheet" href="/theme/css/pygments.css">
+        <link rel="stylesheet" href="/theme/css/main.css">
+
+        {% block extra_head %}{%endblock%}
+    </head>
+
+    <body>
+        <header class="main-header" style="background: url('{% block headerimg %}{% endblock %}') no-repeat center center #DDD; background-size: 100%;">
+        <nav>
+            <div class="container">
+            <ul>
+                <li><a href="/" title="Home">Home</a></li>
+
+                {% if ABOUT_PAGE %}
+                    <li><a href="{{ ABOUT_PAGE }}" title="About">About</a></li>
+                {% endif %}
+                {% if GITHUB_USERNAME %}
+                    <li><a href="http://github.com/{{ GITHUB_USERNAME }}" title="{{ GITHUB_USERNAME }}'s Github" rel="me">Github</a></li>
+                {% endif %}
+                {% if TWITTER_USERNAME %}
+                    <li><a href="http://twitter.com/{{ TWITTER_USERNAME }}" title="{{ TWITTER_USERNAME }} Twitter" rel="me">Twitter</a></li>
+                {% endif %}
+                {% if SHOW_ARCHIVES %}
+                    <li><a href="/archives.html" title="Archive">Archives</a></li>
+                {% endif %}
+                {% if SHOW_FEED %}
+                    <li><a href="/feeds/all.atom.xml" title="sharedmemory.github.io RSS feed" rel="me">RSS</a></li>
+                {% endif %}
+            </ul>
+            </div>
+        </nav>
+        </header>
+
+        {% block content %}{% endblock %}
+
+        {% include 'analytics.html' %}
+    </body>
+</html>
