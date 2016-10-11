@@ -1,0 +1,6 @@
+[submodule "middle-theme"]
+	path = middle-theme
+	url = https://github.com/gobrewers14/middle-theme
+[submodule "pelican-plugins"]
+	path = pelican-plugins
+	url = git://github.com/getpelican/pelican-plugins.git

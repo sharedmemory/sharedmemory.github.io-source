@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Shared Memory</title><link href="sharedmemory.github.io/" rel="alternate"></link><link href="sharedmemory.github.io/feeds/all.atom.xml" rel="self"></link><id>sharedmemory.github.io/</id><updated>2016-10-01T10:20:04+00:00</updated><entry><title>RBM Choice Models</title><link href="sharedmemory.github.io/blog/2016/10/01/rbm-choice-models/" rel="alternate"></link><published>2016-10-01T10:20:04+00:00</published><updated>2016-10-01T10:20:04+00:00</updated><author><name>Carey Chou</name></author><id>tag:,2016-10-01:sharedmemory.github.io/blog/2016/10/01/rbm-choice-models/</id><summary type="html">&lt;h2&gt;Context&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Shared Memory</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2016-10-01T10:20:04+00:00</updated><entry><title>RBM Choice Models</title><link href="/blog/2016/10/01/rbm-choice-models/" rel="alternate"></link><published>2016-10-01T10:20:04+00:00</published><updated>2016-10-01T10:20:04+00:00</updated><author><name>Carey Chou</name></author><id>tag:,2016-10-01:blog/2016/10/01/rbm-choice-models/</id><summary type="html">&lt;h2&gt;Context&lt;/h2&gt;
 &lt;p&gt;Modeling customers' choices is an important step towards understanding how purchase decisions are made as well as being able to quantify the magnitude of tradeoffs among product functions.&lt;/p&gt;
 &lt;p&gt;Traditional approaches to constructing choice models assume IIA (Independence of Irrelevant Alternatives) -- which include MLM, Conjoint Analysis, etc.  In reality, it is impractical to assume that every customer has equal exposure to all choices when making a decision.&lt;/p&gt;
 &lt;p&gt;As we continue to gather online engagement data, product browse/click tracking data gives us a direct signal to model a customer's decision behavior.  Essentailly, we can categorize each visit to the site as a customer trip, then add a binary label to the product being purchased versus the other products being viewed in the session.  Products being viewed are grouped into a "choice set" and the product being purchased is known as the "selection set".  While the maximum size of a choice set is limited to the number of products in an assortment, in reality, the size of the choice set on a per-customer bases will be significantly smaller (i.e. customers will normally consider only a few products when deciding to make a purchase).  In our use case, the average choice set contains approximately 15 products; this is the typical challenge under IIA assumption - the number of available products can sometimes be in the millions (i.e. Amazon) which create very sparse choice sets.&lt;/p&gt;
@@ -34,10 +34,12 @@
 &lt;/ul&gt;
 &lt;p&gt;&lt;img alt="alt text" src="/images/pre_attraction.png" title="Before addition of attraction" /&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;After the addition of a product C, the probability of product A has increased 12 fold.&lt;/li&gt;
+&lt;li&gt;After the addition of a product C, the probability of product A has increased almost 15 fold.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;img alt="alt text" src="/images/post_attraction.png" title="Post attraction" /&gt;&lt;/p&gt;
-&lt;div class="math"&gt;$$\frac{0.1373}{0.0109} = 12.59$$&lt;/div&gt;
+&lt;div class="math"&gt;$$\frac{0.011424}{0.000762} = 14.987$$&lt;/div&gt;
+&lt;p&gt;&lt;img alt="alt text" src="/images/attraction_graph.png" title="Attraction graph" /&gt;&lt;/p&gt;
+&lt;h2&gt;Conclusion/Future Work&lt;/h2&gt;
 &lt;h2&gt;References&lt;/h2&gt;
 &lt;p&gt;[1] Osogami, Takayuki and Otsuka, Makoto.  Testricted Boltzmann Machines modeling human choice.  &lt;em&gt;IBM Research - Tokyo&lt;/em&gt;.&lt;/p&gt;
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {

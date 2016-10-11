@@ -4,56 +4,49 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>sharedmemory.github.io/</loc>
-<lastmod>2016-10-11T11:37:08-00:00</lastmod>
+<loc>/</loc>
+<lastmod>2016-10-11T15:47:12-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>sharedmemory.github.io/archives.html</loc>
-<lastmod>2016-10-11T11:37:08-00:00</lastmod>
+<loc>/archives.html</loc>
+<lastmod>2016-10-11T15:47:12-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>sharedmemory.github.io/tags.html</loc>
-<lastmod>2016-10-11T11:37:08-00:00</lastmod>
+<loc>/tags.html</loc>
+<lastmod>2016-10-11T15:47:12-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>sharedmemory.github.io/categories.html</loc>
-<lastmod>2016-10-11T11:37:08-00:00</lastmod>
+<loc>/categories.html</loc>
+<lastmod>2016-10-11T15:47:12-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>sharedmemory.github.io/pages/about-slug-about.html</loc>
-<lastmod>2016-10-11T11:37:08-00:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>sharedmemory.github.io/blog/2016/10/01/rbm-choice-models/</loc>
+<loc>/blog/2016/10/01/rbm-choice-models/</loc>
 <lastmod>2016-10-01T10:20:04+00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>sharedmemory.github.io/category/11.html</loc>
+<loc>/category/11.html</loc>
 <lastmod>2016-10-01T10:20:04+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>sharedmemory.github.io/author/carey-chou.html</loc>
+<loc>/author/carey-chou.html</loc>
 <lastmod>2016-10-01T10:20:04+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>

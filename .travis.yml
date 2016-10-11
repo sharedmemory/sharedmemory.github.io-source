@@ -10,7 +10,6 @@ python:
 before_install:
 - git submodule update --init --recursive
 install:
-- git submodule update --init --recursive
 - wget http://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -O miniconda.sh;
 - bash miniconda.sh -b -p $HOME/conda
 - export PATH="$HOME/conda/bin:$PATH"

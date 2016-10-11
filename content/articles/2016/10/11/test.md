@@ -47,13 +47,15 @@ $$\psi_{A,C,X}^{(att)}\equiv\frac{p(A|X \cup \{C\})}{p(A|X)}$$
 
 ![alt text](/images/pre_attraction.png "Before addition of attraction")
 
-  - After the addition of a product C, the probability of product A has increased 12 fold.
+  - After the addition of a product C, the probability of product A has increased almost 15 fold.
 
 ![alt text](/images/post_attraction.png "Post attraction")
 
-  $$\frac{0.1373}{0.0109} = 12.59$$
+  $$\frac{0.011424}{0.000762} = 14.987$$
 
+![alt text](/images/attraction_graph.png "Attraction graph")
 
+## Conclusion/Future Work
 
 
 

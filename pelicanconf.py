@@ -8,9 +8,9 @@ LOAD_CONTENT_CACHE = False
 
 AUTHOR = u'Carey Chou'
 SITENAME = u'Shared Memory'
-SITEURL = 'sharedmemory.github.io'
+SITEURL = ''  #sharedmemory.github.io'
 
-#PATH = 'content'
+PATH = 'content'
 
 TIMEZONE = 'UTC'
 
@@ -20,13 +20,13 @@ MARKUP = ('md')
 
 DEFAULT_DATE_FORMAT = '%B %d, %Y'
 
-SUMMARY_MAX_LENGTH = 100
+SUMMARY_MAX_LENGTH = 1000
 DEFAULT_PAGINATION = 10
 
 PAGE_DIRS = ['pages']
 ARTICLE_DIRS = ['articles']
 
-THEME = 'theme'
+THEME = 'themes/pelican-clean-blog/'
 STATIC_PATHS = ['images']
 
 ARTICLE_URL = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
@@ -35,7 +35,7 @@ ARTICLE_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
 PAGE_SAVE_AS = '{category}/{slug}.html'
 PAGE_URL = PAGE_SAVE_AS
 
-STATIC_PATHS = ['images', 'robots.txt']
+STATIC_PATHS = ['images', 'favicon.ico', 'robots.txt']
 
 DEFAULT_HEADER_BG = '/images/buddhabrot.png'
 ABOUT_PAGE = '/pages/about.html'
