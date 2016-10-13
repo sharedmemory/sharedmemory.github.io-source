@@ -1,6 +1,7 @@
-[submodule "middle-theme"]
-	path = middle-theme
-	url = https://github.com/gobrewers14/middle-theme
-[submodule "pelican-plugins"]
-	path = pelican-plugins
-	url = git://github.com/getpelican/pelican-plugins.git
+[submodule "plugins/pelican-plugins"]
+    path = plugins/pelican-plugins
+    url = https://github.com/getpelican/pelican-plugins.git
+
+[submodule "theme/pelican-clean-blog"]
+    path = theme/pelican-clean-blog
+    url = https://github.com/gilsondev/pelican-clean-blog.git
