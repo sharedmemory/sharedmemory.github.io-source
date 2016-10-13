@@ -10,7 +10,7 @@ AUTHOR = u'Carey Chou'
 SITENAME = u'Shared Memory'
 SITEURL = 'sharedmemory.github.io'
 
-#PATH = 'content'
+PATH = 'content'
 
 TIMEZONE = 'UTC'
 
