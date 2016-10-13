@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+            <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <title>Customer Choice Model and Attraction Effect</title>
+
+            <link href="sharedmemory.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Shared Memory Full Atom Feed" />
+            <link href="sharedmemory.github.io/feeds/11.atom.xml" type="application/atom+xml" rel="alternate" title="Shared Memory Categories Atom Feed" />
+        <!-- Bootstrap Core CSS -->
+        <link href="sharedmemory.github.io/theme/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="sharedmemory.github.io/theme/css/clean-blog.min.css" rel="stylesheet">
+
+        <!-- Code highlight color scheme -->
+            <link href="sharedmemory.github.io/theme/css/code_blocks/darkly.css" rel="stylesheet">
+
+
+        <!-- Custom Fonts -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+
+        <meta name="description" content="Context Modeling customers' choices is a key technique in analyzing how purchase decisions are made and also, being able to quantify the ...">
+
+        <meta name="author" content="Carey Chou">
+
+
+	                <meta property="og:locale" content="">
+		<meta property="og:site_name" content="Shared Memory">
+
+	<meta property="og:type" content="article">
+            <meta property="article:author" content="sharedmemory.github.io/author/carey-chou.html">
+	<meta property="og:url" content="sharedmemory.github.io/blog/2016/10/13/customer-choice-model-and-attraction-effect/">
+	<meta property="og:title" content="Customer Choice Model and Attraction Effect">
+	<meta property="article:published_time" content="2016-10-13 09:41:11+00:00">
+            <meta property="og:description" content="Context Modeling customers' choices is a key technique in analyzing how purchase decisions are made and also, being able to quantify the ...">
+
+            <meta property="og:image" content="sharedmemory.github.io//images/buddhabrot.png">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="sharedmemory.github.io/">Shared Memory</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+        <header class="intro-header" style="background-image: url('/images/buddhabrot.png')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>Customer Choice Model and Attraction Effect</h1>
+                        <span class="meta">Posted by
+                                <a href="sharedmemory.github.io/author/carey-chou.html">Carey Chou</a>
+                             on October 13, 2016
+                        </span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    <!-- Post Content -->
+    <article>
+        <h2>Context</h2>
+<p>Modeling customers' choices is a key technique in analyzing how purchase decisions are made and also, being able to quantify the magnitude of feature trade-offs across product functions in a customer's decision process.</p>
+<p>The basic idea of a choice model is to analyze which product a customer would prefer to purchase when she is presented with a collection of choices. For example, in fashion we want to analyze the scale of preference toward buying a black Gucci wallet priced at $2000 vs other choices of designers/colors priced $1500 to $3000. Most of the time, we are interested in much larger choice combinations (e.g. materials, promotion, shape).</p>
+<p>Traditional approaches to choice models (e.g. MLM) assumes IIA (Independence of Irrelevant Alternatives), which cannot represent certain key phenomena.  Several non-parametric methods have been studied and proposed; as we explored many of them, <a href="four">4</a> proposed an interesting RBM variation that extends MLM to represent several scenarios where choices vary among customers. It is also straightforward to implement. Here is our quick and simple experiment.</p>
+<h2>Problem Formulation</h2>
+<p>Our goal is to estimate individual the trade-off effect of purchase given a choice set. Eventually, we want to apply the individual trade-off effect to all customers who we can observe such behavior. Beyond trade-off, we are also interested in attraction effect – a driving force of a product to alternative products when it is presented in the choices.</p>
+<p>Many types of source data coming to mind when approaching this problem. Among them, website behavior is by far the richest; also we can directly observe each visitor's choices and her final selection. For each visitor to the website, we construct her choice set from products she viewed; the final selection is the product she purchased. We consider this level of design as demand based choice model.</p>
+<p>In our experiments, we explored other forms of problem designs, and each one of them reflects very different types of choice phenomena. For instance, we can treat a visitor’s purchases as our choice set, and then the select set represents only those products she eventually kept and not returned. This problem design reflects some subtle decision as related to actual fit, size, quality or price change.  We called this problem design utility based choice model.</p>
+<p>There are many such designs can be defined based on the business use cases. Here we share the experiment of demand based choices.</p>
+<h2>RBM Network</h2>
+<p>In our experiment the size of choice set is 18000 (total number of unique styles). The average choices (average number of unique styles per visitor) is around 13.  We implemented the solution using Python + Chainer on three NVIDIA GeForce TITAN X GPUs.  The network is a binary RBM (visible and hidden) with adaptive weight decay.  To speed up the training, we adopt K-contrastive divergence learning, which performs adaptive K-steps Gibbs sampling.  The weights are updated through reconstruction error on the visible layer via sigmoid cross entropy.a</p>
+<h2>Results</h2>
+<p>We used the trained hidden-to-visible weights to calculate choice rate, which is given by the formula:</p>
+<div class="math">$$\lambda(A|\mathcal{X}) = \displaystyle\sum_{h}exp(-E_{\theta}((\upsilon^{\mathcal{X}}, \omega^{A}), h)) = exp(b_{A})\displaystyle\prod_{k}\sum_{h_{k} \in \{0,1\}}exp((T_{\mathcal{X}}^k + U_{A}^k)h_{k})$$</div>
+<p>We can use these probabilities to compare any two products in a choice set.</p>
+<p><strong>Example</strong>:</p>
+<p><img alt="alt text" src="/images/ysl_handbags.png" title="YSL" /></p>
+<p><img alt="alt text" src="/images/ugly_handbag.png" title="Extreme Difference" /></p>
+<p>We can also use our validation data to contruct actual choice sets and compare those with network calculations.</p>
+<p><strong>Example</strong>:</p>
+<ul>
+<li>Take the most frequent pairs of products in our validation data.</li>
+<li>Calculate their choice rate (this will be the "theoretical").</li>
+<li>Using validation data, calculate their choice rate from each choice set that they occur in (this will be the "actual").</li>
+<li>Calculate the KL-Divergence between these two distributions and use this metric as the graph weight.</li>
+</ul>
+<p><img alt="alt test" src="/images/graph.png" title="KLD-Graph" /></p>
+<p>We can also calculate an attraction effect.  If we have two products in a choice set, how does the addition of a third product affect customer choice? The strength of the attraction effect of a product C on A is defined as:</p>
+<div class="math">$$\psi_{A,C,\mathcal{X}}^{(att)}\equiv\frac{p(A|\mathcal{X} \cup \{C\})}{p(A|\mathcal{X})}$$</div>
+<ul>
+<li>When this equation is greater than one there is an attraction effect.</li>
+<li>Product B is preferred much more than product A.</li>
+</ul>
+<p><img alt="alt text" src="/images/pre_attraction.png" title="Before addition of attraction" /></p>
+<ul>
+<li>After the addition of a product C, the probability of product A has increased almost 15 fold.</li>
+</ul>
+<p><img alt="alt text" src="/images/post_attraction.png" title="Post attraction" /></p>
+<div class="math">$$\frac{0.011424}{0.000762} = 14.987$$</div>
+<p>While not all product combinations exhibit this attractive behavior, several do and can be represented in a graph where the attractiveness is represented as an arrow (note our example in the bottom-right corner).</p>
+<p><img alt="alt text" src="/images/attraction_graph.png" title="Attraction graph" /></p>
+<h2>Next Steps</h2>
+<p><a href="six">6</a> introduces a deep choice model that combines autoencoder encoded features with RBM.</p>
+<h2>References</h2>
+<p><a href="one">https://theses.lib.vt.edu/theses/available/etd-10152003-144051/unrestricted/thesis_etd.pdf</a></p>
+<p><a href="two">http://web.mit.edu/devavrat/www/Srikanth-Thesis.pdf</a></p>
+<p><a href="three">https://arxiv.org/pdf/0910.0063v4.pdf</a></p>
+<p><a href="four">http://pages.stern.nyu.edu/~gvulcano/EMPrefListsRev4.pdf</a></p>
+<p><a href="five">http://papers.nips.cc/paper/5280-restricted-boltzmann-machines-modeling-human-choice.pdf</a></p>
+<p><a href="six">http://www.aaai.org/ocs/index.php/AAAI/AAAI16/paper/view/12098</a></p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+    </article>
+
+
+    <hr>
+
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                    </ul>
+<p class="copyright text-muted">
+    Blog powered by <a href="http://getpelican.com">Pelican</a>,
+    which takes great advantage of <a href="http://python.org">Python</a>.
+</p>                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="sharedmemory.github.io/theme/js/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="sharedmemory.github.io/theme/js/bootstrap.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="sharedmemory.github.io/theme/js/clean-blog.min.js"></script>
+
+</body>
+
+</html>

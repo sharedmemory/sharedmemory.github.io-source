@@ -43,7 +43,7 @@ ABOUT_PAGE = '/pages/about.html'
 SHOW_ARCHIVES = True
 SHOW_FEED = True
 
-PLUGIN_PATHS = ['plugins/pelican-plugins']
+PLUGIN_PATHS = ['plugins']
 PLUGINS = ['sitemap', 'render_math']
 
 SITEMAP = {
