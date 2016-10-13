@@ -20,7 +20,7 @@ MARKUP = ('md')
 
 DEFAULT_DATE_FORMAT = '%B %d, %Y'
 
-SUMMARY_MAX_LENGTH = 1000
+SUMMARY_MAX_LENGTH = 100
 DEFAULT_PAGINATION = 10
 
 PAGE_DIRS = ['pages']
@@ -38,6 +38,7 @@ PAGE_URL = PAGE_SAVE_AS
 STATIC_PATHS = ['images', 'favicon.ico', 'robots.txt']
 
 DEFAULT_HEADER_BG = '/images/buddhabrot.png'
+HEADER_COVER = '/images/buddhabrot.png'
 ABOUT_PAGE = '/pages/about.html'
 SHOW_ARCHIVES = True
 SHOW_FEED = True
