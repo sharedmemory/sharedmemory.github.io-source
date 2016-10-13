@@ -8,7 +8,7 @@ LOAD_CONTENT_CACHE = False
 
 AUTHOR = u'Carey Chou'
 SITENAME = u'Shared Memory'
-SITEURL = '' #sharedmemory.github.io'
+SITEURL = 'sharedmemory.github.io'
 
 PATH = 'content'
 
