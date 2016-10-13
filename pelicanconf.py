@@ -44,7 +44,7 @@ SHOW_ARCHIVES = True
 SHOW_FEED = True
 
 PLUGIN_PATHS = ['pelican-plugins']
-PLUGINS = ['sitemap', 'render_math', 'liquid_tags', 'googleplus_comments']
+PLUGINS = ['sitemap', 'render_math', 'liquid_tags']
 
 SITEMAP = {
     'format': 'xml',
