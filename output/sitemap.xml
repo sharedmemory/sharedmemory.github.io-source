@@ -4,49 +4,49 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>http://sharedmemory.github.io/</loc>
-<lastmod>2016-10-13T14:26:17-00:00</lastmod>
+<loc>/</loc>
+<lastmod>2016-10-13T14:36:33-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sharedmemory.github.io/archives.html</loc>
-<lastmod>2016-10-13T14:26:17-00:00</lastmod>
+<loc>/archives.html</loc>
+<lastmod>2016-10-13T14:36:33-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sharedmemory.github.io/tags.html</loc>
-<lastmod>2016-10-13T14:26:17-00:00</lastmod>
+<loc>/tags.html</loc>
+<lastmod>2016-10-13T14:36:33-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sharedmemory.github.io/categories.html</loc>
-<lastmod>2016-10-13T14:26:17-00:00</lastmod>
+<loc>/categories.html</loc>
+<lastmod>2016-10-13T14:36:33-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sharedmemory.github.io/blog/2016/10/13/customer-choice-model-and-attraction-effect/</loc>
+<loc>/blog/2016/10/13/customer-choice-model-and-attraction-effect/</loc>
 <lastmod>2016-10-13T09:41:11+00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sharedmemory.github.io/category/11.html</loc>
+<loc>/category/11.html</loc>
 <lastmod>2016-10-13T09:41:11+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://sharedmemory.github.io/author/carey-chou.html</loc>
+<loc>/author/carey-chou.html</loc>
 <lastmod>2016-10-13T09:41:11+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
