@@ -1,3 +1,7 @@
-[submodule "plugins/pelican-plugins"]
-    path = plugins/pelican-plugins
-    url = git://github.com/getpelican/pelican-plugins.git
+[submodule "pelican-plugins"]
+        path = pelican-plugins
+        url = git://github.com/getpelican/pelican-plugins.git
+
+[submodule "pelican-clean-blog"]
+        path = pelican-clean-blog
+        url = https://github.com/gilsondev/pelican-clean-blog.git

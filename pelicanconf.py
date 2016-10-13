@@ -8,7 +8,7 @@ LOAD_CONTENT_CACHE = False
 
 AUTHOR = u'Carey Chou'
 SITENAME = u'Shared Memory'
-SITEURL = 'sharedmemory.github.io'
+SITEURL = 'http://sharedmemory.github.io'
 
 #PATH = 'content'
 
@@ -26,7 +26,7 @@ DEFAULT_PAGINATION = 10
 PAGE_DIRS = ['pages']
 ARTICLE_DIRS = ['articles']
 
-THEME = 'theme/clean-blog/'
+THEME = './pelican-clean-blog'
 STATIC_PATHS = ['images']
 
 ARTICLE_URL = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
@@ -43,8 +43,8 @@ ABOUT_PAGE = '/pages/about.html'
 SHOW_ARCHIVES = True
 SHOW_FEED = True
 
-PLUGIN_PATHS = ['plugins']
-PLUGINS = ['sitemap', 'render_math']
+PLUGIN_PATHS = ['pelican-plugins']
+PLUGINS = ['sitemap', 'render_math', 'liquid_tags']
 
 SITEMAP = {
     'format': 'xml',
