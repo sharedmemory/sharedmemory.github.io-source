@@ -26,7 +26,7 @@ DEFAULT_PAGINATION = 10
 PAGE_DIRS = ['pages']
 ARTICLE_DIRS = ['articles']
 
-THEME = 'theme/pelican-clean-blog/'
+THEME = 'theme/clean-blog/'
 STATIC_PATHS = ['images']
 
 ARTICLE_URL = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
@@ -43,7 +43,7 @@ ABOUT_PAGE = '/pages/about.html'
 SHOW_ARCHIVES = True
 SHOW_FEED = True
 
-PLUGIN_PATHS = ['plugins/pelican-plugins']
+PLUGIN_PATHS = ['plugins']
 PLUGINS = ['sitemap', 'render_math']
 
 SITEMAP = {
