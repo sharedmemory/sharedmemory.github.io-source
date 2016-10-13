@@ -2,33 +2,26 @@ Title: Customer Choice Model and Attraction Effect
 Date: 2016-10-12 13:45:57
 
 ## Context
-Modeling customers' choices is a key technique to analyze how purchase decisions are made and also allows us to quantify the magnitude of features tradeoffsacross product functions in customer’s decision process.
+Modeling customer's choices is a key technique to analyze how purchase decisions are made, also able to quantify the magnitude of features tradeoffs across product functions in customer’s decision process.
 
-The basic idea of a choice model is to understand which product a customer would prefer to purchase when she is presented with a list of product choices. For example in fashion, we want to estimate the scale of preference towards buying a black Gucci wallet priced at $2,000 vs other options of designers/colors priced $1,500 to $3,000. Most of the time we are interested in much larger choice combinations (e.g. materials, promotion, shape).
+The basic idea of choice model is to analyze which product a customer would prefer to purchase when she is presented with a collection of choices. For example in fashion, we want to analyze the scale of preference toward buying a black Gucci wallet priced at $2000 vs other choices of designers/colors/price $1500 to $3000. Most of the time, we are interested in much larger choice combinations (e.g. materials, promotion, shape). 
 
-Traditional approaches to choice models e.g. MLM assumes IIA(Independence of Irrelevant Alternatives), which cannot represent some key phenomena that we are interested in (as mentioned in [[2]]).  Several methods have been studied and proposed; as we continued to explore many of them, [[1]] proposed an interesting RBM variation that extends MLM to represent the scenario where choice options can vary among customers. It is also straightforward to implement.
+Traditional approaches to choice models e.g. MLM assumes IIA (Independence of Irrelevant Alternatives), which cannot represent some key phenomena that we mostly interested in as mentioned in the references. Several non-parametric methods had been studied and proposed. As we explored many of them, [[4]] proposed an interesting RBM variation that extends MLM to represent several scenarios where choices vary among customers. It is also straightforward to derive side-by-side complimentary, substituted, and attractive effects. Here is our quick and simple experiment.
 
 ##Problem Formulation
-Our goal is to estimate the trade-off effect in purchases among a given choice set. Eventually, we want to apply the trade-off to all customers who we can observe such behavior. There are many types of source data that come to mind. Among them, website behavior is by far the richest; we can directly observe each visitor's choice options and her final selection. For each visitor to the website, we construct her choice set from products she viewed; the final selection is the product she purchases.  We consider this level of design as demand based choices.
+Our goal is to estimate individual tradeoff effect of purchase given a choice set. Eventually we want to apply the individual tradeoff effect to all customers who we can observe such behavior. Beyond tradeoff, we are also interested in attraction effect – a driving force of a product to alternative products when it is presented in the choices. 
 
-In our experiments, we explored other forms of problem designs, and each one of them reflects very different types of choice phenomena.  For instance, we can treat visitors' purchases as our choice set, and then select the set that represents only those products she eventually kept and did not return.  This problem design reflects some subtle decisions related to actual fit, size, and quality. We call this problem design utility based choice.
+There are many types of source data coming to mind. Among them, website behavior is by far the richest; also we can directly observe each visitor's choices and her final selection. For each visitor to the website, we construct her choice set from products she viewed; final selection is the product she purchased. We consider this level of design as demand based choice model. 
 
-There are many such designs that can be defined based on the business use cases. Here we share the experiment related to demand based choices.
+In our experiments, we explored other forms of problem designs, and each one of them reflects very different types of choice phenomena. For instance, we can treat visitor’s purchase products as our choice set, and then the select set represents only those products she eventually kept and not returned. This problem design reflects some subtle decision as related to actual fit, size, quality or price change, etc. We called this problem design utility based choice model. 
 
-In our experiment, the size of the choice set is 18,000 (total number of unique styles). The average choices (average number of unique styles per observation) is around 13. Following the design of [[1]], our RBM layers are:
+There are many such designs can be defined based on the business use cases. Here we share the experiment of demand based choices. 
 
-$$$$
-
-<INSERT PICTURE OF NETWORK>
-
-$$$$
-
-As we continue to gather online engagement data, product browse/click tracking data gives us a direct signal to model a customer's decision.  Essentially, we can categorize each visit to the site as a customer trip, then add a binary label to the product being purchased versus the other products being viewed in the session.  Products being viewed are grouped into a "choice set" and the purchased product is known as the "selection set".  While the maximum size of a choice set is limited to the number of products in an assortment, in reality, the size of the choice set on a per-customer bases will be significantly smaller (i.e. customers will normally consider only a few products when deciding to make a purchase). In our use case, the average choice set contains approximately 15 products; this is the typical challenge under IIA assumption - the number of available products can sometimes be in the millions (i.e. Amazon) which create very sparse choice sets.
-
-To tackle this unique problem, we studied several methods including lower bound non-parametric models, rank based EM models, and [RBM Human Choice].  These are the most recent emerging approaches to solve sparsity choice models with limited data.  The RBM approach is appealing in that we canal so derive side-by-side complimentary, substituted, and attractive effects.
 
 ## RBM Network
-We implemented the solution using Python + Chainer on three Nvidia GeForceTITAN X GPUs.  The network is a binary RBM (visible and hidden) with adaptive weight decay.  To speed up the training, we adopt K-contrastive divergence learning, which performs adaptive K-step Gibbs sampling.  The weights are updated through reconstruction error on the visible layer via sigmoid cross-entropy.
+In our experiment the size of choice set is 18000 (total number of unique styles). The average choices (average number of unique styles per visitor) is around 13. Follow the design of [[4]], our RBM layers are:
+
+We implemented the solution using Python + Chainer on three NVIDIA GeForce TITAN X GPUs.  The network is a binary RBM (visible and hidden) with adaptive weight decay.  To speed up the training, we adopt K-contrastive divergence learning, which performs adaptive K-steps Gibbs sampling method.  The weights are updated through reconstruction error on the visible layer via sigmoid cross entropy.
 
 ## Results
 We used the trained hidden-to-visible weights to calculate choice rate, which is given by the formula:
@@ -73,14 +66,18 @@ $$\psi_{A,C,\mathcal{X}}^{(att)}\equiv\frac{p(A|\mathcal{X} \cup \{C\})}{p(A|\ma
 ## Next Steps
 
 ## References
-1. Takayuki Osogami, Makoto Otsuka.  Restricted Boltzmann Machines Modeling Human Choice.  *IBM Research - Tokyo*
+[[1]] https://theses.lib.vt.edu/theses/available/etd-10152003-144051/unrestricted/thesis_etd.pdf
 
-2. Garrett van Ryzin, Gustavo Vulcano.  An Expectation-Maximization Method to Estimate a Rank-based Choice Model of Demand.  *Operations Research*, 2016-08.
+[[2]] http://web.mit.edu/devavrat/www/Srikanth-Thesis.pdf
 
-3. Takayuki Osogami, Makoto Otsuka.  A Deep Choice Model.  *Proceedings of the Thirtieth AAAI Conference on Artificial Intelligence*, 21 February 2016.
+[[3]] https://arxiv.org/pdf/0910.0063v4.pdf
 
+[[4]] http://pages.stern.nyu.edu/~gvulcano/EMPrefListsRev4.pdf
 
+[[5]] http://papers.nips.cc/paper/5280-restricted-boltzmann-machines-modeling-human-choice.pdf
 
-[1]: http://papers.nips.cc/paper/5280-restricted-boltzmann-machines-modeling-human-choice.pdf
-[2]: http://pages.stern.nyu.edu/~gvulcano/EMPrefListsRev4.pdf
-[3]: http://www.aaai.org/ocs/index.php/AAAI/AAAI16/paper/view/12098/11674
+[1]: https://theses.lib.vt.edu/theses/available/etd-10152003-144051/unrestricted/thesis_etd.pdf
+[2]: http://web.mit.edu/devavrat/www/Srikanth-Thesis.pdf
+[3]: https://arxiv.org/pdf/0910.0063v4.pdf
+[4]: http://pages.stern.nyu.edu/~gvulcano/EMPrefListsRev4.pdf
+[5]: http://papers.nips.cc/paper/5280-restricted-boltzmann-machines-modeling-human-choice.pdf
