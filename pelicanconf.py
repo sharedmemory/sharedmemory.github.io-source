@@ -8,7 +8,7 @@ LOAD_CONTENT_CACHE = False
 
 AUTHOR = u'Carey Chou'
 SITENAME = u'Shared Memory'
-SITEURL = 'sharedmemory.github.io'
+SITEURL = '' #sharedmemory.github.io'
 
 PATH = 'content'
 
@@ -43,7 +43,7 @@ ABOUT_PAGE = '/pages/about.html'
 SHOW_ARCHIVES = True
 SHOW_FEED = True
 
-PLUGIN_PATHS = ['plugins']
+PLUGIN_PATHS = ['plugins/pelican-plugins']
 PLUGINS = ['sitemap', 'render_math']
 
 SITEMAP = {
