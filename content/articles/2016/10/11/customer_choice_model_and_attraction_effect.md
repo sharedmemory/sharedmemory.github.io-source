@@ -8,7 +8,8 @@ The basic idea of choice model is to analyze which product a customer would pref
 
 Traditional approaches to choice models e.g. MLM assumes IIA (Independence of Irrelevant Alternatives), which cannot represent some key phenomena that we mostly interested in as mentioned in the references. Several non-parametric methods had been studied and proposed. As we explored many of them, [[4]] proposed an interesting RBM variation that extends MLM to represent several scenarios where choices vary among customers. It is also straightforward to derive side-by-side complimentary, substituted, and attractive effects. Here is our quick and simple experiment.
 
-##Problem Formulation
+
+## Experiment
 Our goal is to estimate individual tradeoff effect of purchase given a choice set. Eventually we want to apply the individual tradeoff effect to all customers who we can observe such behavior. Beyond tradeoff, we are also interested in attraction effect – a driving force of a product to alternative products when it is presented in the choices. 
 
 There are many types of source data coming to mind. Among them, website behavior is by far the richest; also we can directly observe each visitor's choices and her final selection. For each visitor to the website, we construct her choice set from products she viewed; final selection is the product she purchased. We consider this level of design as demand based choice model. 
@@ -64,6 +65,7 @@ $$\psi_{A,C,\mathcal{X}}^{(att)}\equiv\frac{p(A|\mathcal{X} \cup \{C\})}{p(A|\ma
 ![alt text](/images/attraction_graph.png "Attraction graph")
 
 ## Next Steps
+[[6]] introduces a deep choice model that combines autoencoder encoded features with RBM. 
 
 ## References
 [[1]] https://theses.lib.vt.edu/theses/available/etd-10152003-144051/unrestricted/thesis_etd.pdf
@@ -76,8 +78,15 @@ $$\psi_{A,C,\mathcal{X}}^{(att)}\equiv\frac{p(A|\mathcal{X} \cup \{C\})}{p(A|\ma
 
 [[5]] http://papers.nips.cc/paper/5280-restricted-boltzmann-machines-modeling-human-choice.pdf
 
+[[6]] http://www.aaai.org/ocs/index.php/AAAI/AAAI16/paper/view/12098
+
 [1]: https://theses.lib.vt.edu/theses/available/etd-10152003-144051/unrestricted/thesis_etd.pdf
 [2]: http://web.mit.edu/devavrat/www/Srikanth-Thesis.pdf
 [3]: https://arxiv.org/pdf/0910.0063v4.pdf
 [4]: http://pages.stern.nyu.edu/~gvulcano/EMPrefListsRev4.pdf
 [5]: http://papers.nips.cc/paper/5280-restricted-boltzmann-machines-modeling-human-choice.pdf
+[6]: http://www.aaai.org/ocs/index.php/AAAI/AAAI16/paper/view/12098
+
+
+
+
