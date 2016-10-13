@@ -8,7 +8,7 @@ LOAD_CONTENT_CACHE = False
 
 AUTHOR = u'Carey Chou'
 SITENAME = u'Shared Memory'
-SITEURL = 'http://sharedmemory.github.io'
+SITEURL = ''  # http://sharedmemory.github.io'
 
 #PATH = 'content'
 
@@ -35,7 +35,7 @@ ARTICLE_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
 PAGE_SAVE_AS = '{category}/{slug}.html'
 PAGE_URL = PAGE_SAVE_AS
 
-STATIC_PATHS = ['images', 'favicon.ico', 'robots.txt']
+STATIC_PATHS = ['images', 'CNAME', 'favicon.ico', 'robots.txt']
 
 DEFAULT_HEADER_BG = '/images/buddhabrot.png'
 HEADER_COVER = '/images/buddhabrot.png'
