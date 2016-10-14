@@ -4,4 +4,4 @@
 
 [submodule "pelican-clean-blog"]
         path = pelican-clean-blog
-        url = https://github.com/gilsondev/pelican-clean-blog.git
+        url = https://github.com/gobrewers14/pelican-clean-blog.git

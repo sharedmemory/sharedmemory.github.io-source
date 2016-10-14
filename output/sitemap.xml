@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>/</loc>
-<lastmod>2016-10-13T14:36:33-00:00</lastmod>
+<lastmod>2016-10-14T11:51:39-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/archives.html</loc>
-<lastmod>2016-10-13T14:36:33-00:00</lastmod>
+<lastmod>2016-10-14T11:51:39-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/tags.html</loc>
-<lastmod>2016-10-13T14:36:33-00:00</lastmod>
+<lastmod>2016-10-14T11:51:39-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>/categories.html</loc>
-<lastmod>2016-10-13T14:36:33-00:00</lastmod>
+<lastmod>2016-10-14T11:51:39-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -39,6 +39,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>/blog/2016/01/01/get-comments-to-work-on-this-blog/</loc>
+<lastmod>2016-01-01T00:00:00+00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>/category/11.html</loc>
 <lastmod>2016-10-13T09:41:11+00:00</lastmod>
 <changefreq>daily</changefreq>
@@ -46,8 +53,22 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>/category/14.html</loc>
+<lastmod>2016-01-01T00:00:00+00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>/author/carey-chou.html</loc>
 <lastmod>2016-10-13T09:41:11+00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>/author/isaac-newton.html</loc>
+<lastmod>2016-01-01T00:00:00+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
