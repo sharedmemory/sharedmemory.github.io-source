@@ -105,5 +105,4 @@
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary></entry><entry><title>Get comments to work on this blog</title><link href="/blog/2016/01/01/get-comments-to-work-on-this-blog/" rel="alternate"></link><published>2016-01-01T00:00:00+00:00</published><updated>2016-01-01T00:00:00+00:00</updated><author><name>Isaac Newton</name></author><id>tag:,2016-01-01:blog/2016/01/01/get-comments-to-work-on-this-blog/</id><summary type="html">&lt;h2&gt;Stuff&lt;/h2&gt;
-&lt;p&gt;There is not much in this blog post in fact it is going to be really boring but I need to see if I can get the comment section to work at the end of the article.&lt;/p&gt;</summary></entry></feed>
+&lt;/script&gt;</summary></entry></feed>

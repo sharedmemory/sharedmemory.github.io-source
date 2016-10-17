@@ -47,7 +47,7 @@ PLUGIN_PATHS = ['pelican-plugins']
 PLUGINS = ['sitemap', 'render_math', 'liquid_tags', 'pelican_comment_system']
 
 PELICAN_COMMENT_SYSTEM = True
-PELICAN_COMMENT_SYSTEM_IDENTICON_DATA = ('author',)
+PELICAN_COMMENT_SYSTEM_IDENTICON_OUTPUT_PATH = 'images/identicon'
 
 SITEMAP = {
     'format': 'xml',
