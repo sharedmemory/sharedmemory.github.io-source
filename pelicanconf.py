@@ -26,7 +26,7 @@ DEFAULT_PAGINATION = 10
 PAGE_DIRS = ['pages']
 ARTICLE_DIRS = ['articles']
 
-THEME = './pelican-clean-blog'
+THEME = './clean-blog-theme'
 STATIC_PATHS = ['images']
 
 ARTICLE_URL = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/'

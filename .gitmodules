@@ -2,6 +2,6 @@
         path = pelican-plugins
         url = git://github.com/getpelican/pelican-plugins.git
 
-[submodule "pelican-clean-blog"]
-        path = pelican-clean-blog
-        url = https://github.com/gobrewers14/pelican-clean-blog.git
+[submodule "clean-blog-theme"]
+        path = clean-blog-theme
+        url = https://github.com/gobrewers14/clean-blog-theme.git
