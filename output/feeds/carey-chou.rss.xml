@@ -105,4 +105,18 @@
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Carey Chou</dc:creator><pubDate>Thu, 13 Oct 2016 09:41:11 +0000</pubDate><guid isPermaLink="false">tag:,2016-10-13:blog/2016/10/13/customer-choice-model-and-attraction-effect/</guid></item></channel></rss>
+&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Carey Chou</dc:creator><pubDate>Thu, 13 Oct 2016 09:41:11 +0000</pubDate><guid isPermaLink="false">tag:,2016-10-13:blog/2016/10/13/customer-choice-model-and-attraction-effect/</guid></item><item><title>Adversarial Networks in Fashion</title><link>/blog/2016/10/11/adversarial-networks-in-fashion/</link><description>&lt;p&gt;Recent generative model research has developed a class of methods known as Generative Adversarial Networks (GANs).  These models adopt a game theoritc approach to training; to networks D (discriminator) and G (generator) "play a game" where D is trained to learn generated data from real data and G is trained to confuse D that the data it's generating is real.  Several variants of these networks [&lt;a href="https://arxiv.org/pdf/1511.05644v2.pdf"&gt;1&lt;/a&gt;, &lt;a href="http://arxiv.org/abs/1511.06434"&gt;2&lt;/a&gt;] have produced unbelieveably accurate samples.&lt;/p&gt;
+&lt;h2&gt;Handbag Addition&lt;/h2&gt;
+&lt;p&gt;This is a "fashion" edition of the results from [&lt;a href="http://arxiv.org/abs/1511.06434"&gt;2&lt;/a&gt;] where the authors perform vector arithmetic in z-space.  The classic example is:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;with man-with-glasses - man-without-glasses + woman = woman-with-glasses&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;In our case, using handbags, the transition is much more subtle and not obvious, and up to interpretation as to what features the final product extracts from each image.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="alt text" src="/images/handbag_addition.jpg" title="Addition" /&gt;&lt;/p&gt;
+&lt;p&gt;Taking 100 random points in z-space and varying the mean and standard deviation, we are able to generate what appears to be a transition from a handle-less clutch to much wider handbag with a handle.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="alt text" src="/images/handbag_transformation.jpg" title="Z-Transformation" /&gt;&lt;/p&gt;
+&lt;h2&gt;Thoughts&lt;/h2&gt;
+&lt;p&gt;An interesting experiemnt could be taking products that a shopper has viewed or purchased and using these techniques, create new patters/shapes/styles tayolred specificlly to that individual.&lt;/p&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;p&gt;[1] Brendan Frey, Ian Goodfellow, Navdeep Jaitly, Alireza Maklhzani, and Jonathon Shlens.  Adversarial Autoencoders. &lt;em&gt;arXiv:1511.05644v2 [cs.LG]&lt;/em&gt;, 25 May 2016.&lt;/p&gt;
+&lt;p&gt;[2] Soumith Chintala, Luke Metz, and Alec Radford.  Unsupervised Representation Learning
+with Deep Convolutional Generative Adversarial Networks.  &lt;em&gt;arXiv:1511.06434v2&lt;/em&gt;, 07 January 2016.&lt;/p&gt;
+&lt;p&gt;[3] Xi Chen, Viki Cheung, Ian Goodfellow, Alec Radford, Tim Salimans, Wojciech Zaremba.  Improved Techniques for Training GANs.  &lt;em&gt;arXivL1606.03498v1 [cs.LG]&lt;/em&gt;, 10 June 2016.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Carey Chou</dc:creator><pubDate>Tue, 11 Oct 2016 11:35:56 +0000</pubDate><guid isPermaLink="false">tag:,2016-10-11:blog/2016/10/11/adversarial-networks-in-fashion/</guid></item></channel></rss>
