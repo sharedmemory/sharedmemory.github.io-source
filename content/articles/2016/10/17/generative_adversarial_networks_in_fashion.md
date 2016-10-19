@@ -10,7 +10,7 @@ This is a "fashion" edition of the results from [[2](http://arxiv.org/abs/1511.0
 
 **with man-with-glasses - man-without-glasses + woman = woman-with-glasses**
 
-We applied similar method to our industry in handbags to perform "arithmetic" handbag features; then reconstruct new handbags from those calculated latent features . The transition is much more subtle and not obvious, and up to interpretation as to what features the final product extracts from each image.
+We applied similar method to our industry in handbags to perform "arithmetic" handbag features; then reconstruct new handbags from those calculated latent features. The idea behind is to take two popular handbags; let GAN extracts/merges their features, and then subtracts them from features of a least popular handbag. The transition is much more subtle and not obvious, and up to interpretation as to what features the final product extracts from each image.
 
 
 ![alt text](/images/handbag_addition.jpg  "Addition")
