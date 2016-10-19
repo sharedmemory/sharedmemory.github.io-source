@@ -1,7 +1,7 @@
 Title: Adversarial Networks in Fashion
-Date: 2016-10-17 11:35:56
+Date: 2016-10-19 11:35:56
 
-Recent generative model research has developed a class of methods known as Generative Adversarial Networks (GANs).  These models adopt a game theoritc approach to training; two networks D (discriminator) and G (generator) "play a game" where D is trained to learn generated data from real data and G is trained to confuse D that the data it's generating is real.  Several variants of these networks [[1](https://arxiv.org/pdf/1511.05644v2.pdf), [2](http://arxiv.org/abs/1511.06434)] have produced unbelieveably accurate samples.
+Recent generative model research has developed a class of methods known as Generative Adversarial Networks (GANs).  These models adopt a game theoretic approach to training; two networks D (discriminator) and G (generator) "play a game" where D is trained to learn generated data from real data and G is trained to confuse D that the data it's generating is real.  Several variants of these networks [[1](https://arxiv.org/pdf/1511.05644v2.pdf), [2](http://arxiv.org/abs/1511.06434)] have produced unbelieveably accurate samples.
 
 
 ## Handbag Addition
@@ -10,10 +10,10 @@ This is a "fashion" edition of the results from [[2](http://arxiv.org/abs/1511.0
 
 **with man-with-glasses - man-without-glasses + woman = woman-with-glasses**
 
-We applied similar method to our industry in handbags to perform "arithmetic" handbag features; then reconstruct new handbags from those calculated latent features. The idea behind is to take two popular handbags; let GAN extracts/merges their features, and then subtracts them from features of a least popular handbag. The transition is much more subtle and not obvious, and up to interpretation as to what features the final product extracts from each image.
+We applied similar methods specific to our industry using handbags.  We perform "arithmetic" on handbag features - that is, we reconstruct new handbags from the latent features of our network. The idea behind this is to take two popular handbags, let the GAN extract/merge their features, and then subtract them from features of a less popular handbag.  The transition is much more subtle and not obvious, and up to interpretation as to what features the final product extracts from each image.
 
 
-![alt text](/images/handbag_addition.jpg  "Addition")
+![alt text](/images/handbag_addition_updated.jpg  "Addition")
 
 
 Taking 500 random points in z-space and varying the mean and standard deviation, we are able to generate what appears to be a transition from a handle-less clutch to much wider handbag with a handle.
@@ -32,6 +32,3 @@ An interesting experiemnt could be taking products that a shopper has viewed or 
 with Deep Convolutional Generative Adversarial Networks.  *arXiv:1511.06434v2*, 07 January 2016.
 
 [3] Xi Chen, Viki Cheung, Ian Goodfellow, Alec Radford, Tim Salimans, Wojciech Zaremba.  Improved Techniques for Training GANs.  *arXivL1606.03498v1 [cs.LG]*, 10 June 2016.
-~
-~
-

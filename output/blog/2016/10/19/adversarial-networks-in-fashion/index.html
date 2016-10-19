@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+            <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <title>Adversarial Networks in Fashion</title>
+
+            <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Shared Memory Full Atom Feed" />
+            <link href="/feeds/19.atom.xml" type="application/atom+xml" rel="alternate" title="Shared Memory Categories Atom Feed" />
+        <!-- Bootstrap Core CSS -->
+        <link href="/theme/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="/theme/css/clean-blog.min.css" rel="stylesheet">
+
+        <!-- Code highlight color scheme -->
+            <link href="/theme/css/code_blocks/darkly.css" rel="stylesheet">
+
+
+        <!-- Custom Fonts -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+
+        <meta name="description" content="Recent generative model research has developed a class of methods known as Generative Adversarial Networks (GANs). These models adopt a ...">
+
+        <meta name="author" content="Carey Chou">
+
+
+	                <meta property="og:locale" content="">
+		<meta property="og:site_name" content="Shared Memory">
+
+	<meta property="og:type" content="article">
+            <meta property="article:author" content="/author/carey-chou.html">
+	<meta property="og:url" content="/blog/2016/10/19/adversarial-networks-in-fashion/">
+	<meta property="og:title" content="Adversarial Networks in Fashion">
+	<meta property="article:published_time" content="2016-10-19 11:35:56+00:00">
+            <meta property="og:description" content="Recent generative model research has developed a class of methods known as Generative Adversarial Networks (GANs). These models adopt a ...">
+
+            <meta property="og:image" content="//images/buddhabrot.png">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Shared Memory</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+        <header class="intro-header" style="background-image: url('/images/buddhabrot.png')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>Adversarial Networks in Fashion</h1>
+                        <span class="meta">Posted by
+                                <a href="/author/carey-chou.html">Carey Chou</a>
+                             on October 19, 2016
+                        </span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    <!-- Post Content -->
+    <article>
+        <p>Recent generative model research has developed a class of methods known as Generative Adversarial Networks (GANs).  These models adopt a game theoretic approach to training; two networks D (discriminator) and G (generator) "play a game" where D is trained to learn generated data from real data and G is trained to confuse D that the data it's generating is real.  Several variants of these networks [<a href="https://arxiv.org/pdf/1511.05644v2.pdf">1</a>, <a href="http://arxiv.org/abs/1511.06434">2</a>] have produced unbelieveably accurate samples.</p>
+<h2>Handbag Addition</h2>
+<p>This is a "fashion" edition of the results from [<a href="http://arxiv.org/abs/1511.06434">2</a>] where the authors perform vector arithmetic in z-space.  The classic example is:</p>
+<p><strong>with man-with-glasses - man-without-glasses + woman = woman-with-glasses</strong></p>
+<p>We applied similar methods specific to our industry using handbags.  We perform "arithmetic" on handbag features - that is, we reconstruct new handbags from the latent features of our network. The idea behind this is to take two popular handbags, let the GAN extract/merge their features, and then subtract them from features of a less popular handbag.  The transition is much more subtle and not obvious, and up to interpretation as to what features the final product extracts from each image.</p>
+<p><img alt="alt text" src="/images/handbag_addition_updated.jpg" title="Addition" /></p>
+<p>Taking 500 random points in z-space and varying the mean and standard deviation, we are able to generate what appears to be a transition from a handle-less clutch to much wider handbag with a handle.</p>
+<p><img alt="alt text" src="/images/handbag_transformation.jpg" title="Z-Transformation" /></p>
+<h2>Thoughts</h2>
+<p>An interesting experiemnt could be taking products that a shopper has viewed or purchased and using these techniques, create new patters/shapes/styles tailored specificlly to that individual.</p>
+<h2>References</h2>
+<p>[1] Brendan Frey, Ian Goodfellow, Navdeep Jaitly, Alireza Maklhzani, and Jonathon Shlens.  Adversarial Autoencoders. <em>arXiv:1511.05644v2 [cs.LG]</em>, 25 May 2016.</p>
+<p>[2] Soumith Chintala, Luke Metz, and Alec Radford.  Unsupervised Representation Learning
+with Deep Convolutional Generative Adversarial Networks.  <em>arXiv:1511.06434v2</em>, 07 January 2016.</p>
+<p>[3] Xi Chen, Viki Cheung, Ian Goodfellow, Alec Radford, Tim Salimans, Wojciech Zaremba.  Improved Techniques for Training GANs.  <em>arXivL1606.03498v1 [cs.LG]</em>, 10 June 2016.</p>
+    </article>
+    	<style>
+#pcs-comment-form input,
+#pcs-comment-form textarea {
+	width: 100%;
+}
+#pcs-comment-form-display-replyto {
+	border: solid 1px black;
+	padding: 2px;
+}
+#pcs-comment-form-display-replyto p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+#pcs-comments ul {
+	list-style: none;
+}
+#pcs-comments .comment-left {
+	display: table-cell;
+	padding-right: 10px;
+}
+#pcs-comments .comment-body {
+	display: table-cell;
+	vertical-align: top;
+	width: 100%;
+}
+</style>
+
+	<section id="pcs-comments">
+	<header>
+		<h2>Comments</h2>
+		<hr/>
+	</header>
+		<p>There are no comments yet.</p>
+	<section>
+	<form id="pcs-comment-form" action="#">
+		<legend>Add a Comment</legend>
+		<input type="hidden" id="pcs-comment-form-input-replyto">
+		<fieldset>
+			<label for="pcs-comment-form-input-name">Name</label>
+			<input  id="pcs-comment-form-input-name" type="text" placeholder="Enter your name or nickname" />
+		</fieldset>
+		<fieldset>
+			<label for="pcs-comment-form-input-website">Website</label>
+			<input  id="pcs-comment-form-input-website" type="text" placeholder="Enter your website (optional)" />
+		</fieldset>
+		<fieldset>
+			<label   for="pcs-comment-form-input-textarea">Your Comment</label>
+			<textarea id="pcs-comment-form-input-textarea" rows="5" style="resize:vertical;" placeholder="Your comment"></textarea>
+			<p>You can use the <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> syntax to format your comment.</p>
+			<div style="display: none; " id="pcs-comment-form-display-replyto"></div>
+		</fieldset>
+
+		<button type="submit"
+				id="pcs-comment-form-button-submit"
+				>Post via email</button>
+
+			<a href="/feeds/comment.adversarial-networks-in-fashion.atom.xml">
+				Comment Atom Feed
+			</a>
+	</form>
+</section>
+
+</section>
+
+			<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="/theme/js/comments.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			CommentSystem.email_user   = "shared.memory14";
+			CommentSystem.email_domain = "gmail.com";
+			CommentSystem.display_replyto_html = function(comment_content, article_slug, author) { 
+				return ''
+					+ '<button style="float:right;" onclick="CommentSystem.cancelReply(); return false;" title="Cancel the reply">'
+					+ 	'×'
+					+ '</button>'
+					+ '<p>This comment will be posted as a reply to \'<a title="'+comment_content+'" href="#comment-'+article_slug+'">'+author+'</a>\'</p>';
+			};
+
+			$('#pcs-comment-form').on("submit",
+				function( event )
+				{
+					event.preventDefault();
+					$(location).attr('href', CommentSystem.getMailtoLink("adversarial-networks-in-fashion"));
+				}
+			);
+		});
+	</script>
+
+
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                    </ul>
+<p class="copyright text-muted">
+    Blog powered by <a href="http://getpelican.com">Pelican</a>,
+    which takes great advantage of <a href="http://python.org">Python</a>.
+</p>                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="/theme/js/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/theme/js/bootstrap.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="/theme/js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
